@@ -42,7 +42,7 @@ resource "kubernetes_deployment" "mysql-deployment" {
           env = [
 		    {
 			  name = "MYSQL_DATASOURCE_URL"
-              value_from {
+              value_from = {
                 config_map_key_ref {
 				  key  = "MYSQL_DATASOURCE_URL"
                   name = "mysql-config" 

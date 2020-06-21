@@ -5,9 +5,9 @@ resource "kubernetes_secret" "mysql-secret" {
   }
 
   data = {
-    MYSQL_ROOT_PASSWORD: cGFzc3dvcmQ= #password
-    MYSQL_USER: cm9vdA== #root
-    MYSQL_PASSWORD: dGVzdDEyMw== #test123
+    MYSQL_ROOT_PASSWORD: cGFzc3dvcmQ=
+    MYSQL_USER: cm9vdA==
+    MYSQL_PASSWORD: dGVzdDEyMw==
   }
 
   type = "Opaque"
