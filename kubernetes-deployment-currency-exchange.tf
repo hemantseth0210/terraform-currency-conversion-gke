@@ -23,7 +23,7 @@ resource "kubernetes_deployment" "currency-exchange-deployment" {
       }
       spec {
         container {
-          image = "hemantseth0210/currency-exchange-service:0.0.1"
+          image = "hemantseth0210/currency-exchange-service:0.0.2"
           name  = "currency-exchange"
 
           port {
