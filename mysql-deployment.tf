@@ -83,32 +83,31 @@ resource "kubernetes_deployment" "mysql-deployment" {
               }
 		  }
 		  
-
-		  volume_mount = [
-		    {
-		      name = "mysql-persistent-storage"
-			  mount_path = "/var/lib/mysql"
-		    },
-			{
-			  name = "mysql-initdb"
-			  mount_path = "/docker-entrypoint-initdb.d"
-			}
-		  ]
-        }
-		volume = [
-		  {
+		  volume_mount {
 		    name = "mysql-persistent-storage"
-            persistent_volume_claim = {
-		      claim_name = "${kubernetes_persistent_volume_claim.mysql-persistent-volume-claim.metadata.0.name}"
-			}
-          },
-          {
+			mount_path = "/var/lib/mysql"
+		  }
+		  
+		  volume_mount {
 		    name = "mysql-initdb"
-            config_map = {
-		      name = "mysql-config"
-			}
-          } 		  
-		]
+			mount_path = "/docker-entrypoint-initdb.d"
+		  }
+  
+        }
+		
+		volume {
+		  name = "mysql-persistent-storage"
+          persistent_volume_claim = {
+		    claim_name = "${kubernetes_persistent_volume_claim.mysql-persistent-volume-claim.metadata.0.name}"
+		  }
+		}
+		
+		volume {
+		  name = "mysql-initdb"
+          config_map = {
+		    name = "mysql-config"
+		  }
+		}
       } 
     } 
   }
