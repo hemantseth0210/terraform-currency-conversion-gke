@@ -1,6 +1,7 @@
 resource "kubernetes_persistent_volume_claim" "mysql-persistent-volume-claim" {
   metadata {
     name = "mysql-persistent-volume-claim"
+	namespace = kubernetes_namespace.n.metadata[0].name
   }
   spec {
     access_modes = ["ReadWriteOnce"]
