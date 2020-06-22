@@ -23,7 +23,7 @@ resource "kubernetes_deployment" "currency-exchange-deployment" {
       }
       spec {
         container {
-          image = "hemantseth0210/currency-exchange-service:0.0.3"
+          image = "hemantseth0210/currency-exchange-service:0.0.4"
           name  = "currency-exchange"
 
           port {
@@ -52,20 +52,10 @@ resource "kubernetes_deployment" "currency-exchange-deployment" {
 		  }
 		  
 		  env {
-		     name = "MYSQL_USER"
+		     name = "MYSQL_ROOT_PASSWORD"
              value_from {
                 secret_key_ref {
-				  key  = "MYSQL_USER"
-                  name = "mysql-secret" 
-                }   				
-              }
-		  }
-		  
-		  env {
-		     name = "MYSQL_PASSWORD"
-             value_from {
-                secret_key_ref {
-				  key  = "MYSQL_PASSWORD"
+				  key  = "MYSQL_ROOT_PASSWORD"
                   name = "mysql-secret" 
                 }   				
               }

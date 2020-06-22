@@ -8,7 +8,7 @@ resource "kubernetes_service" "currency-exchange-service" {
       App = kubernetes_deployment.currency-exchange-deployment.spec.0.template.0.metadata[0].labels.App
     }
     port {
-      port        = 8100
+      port        = 8000
       target_port = 8000
     }
     type = "ClusterIP"
