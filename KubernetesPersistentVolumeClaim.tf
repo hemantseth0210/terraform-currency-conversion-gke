@@ -10,7 +10,7 @@ resource "kubernetes_persistent_volume_claim" "mysql-persistent-volume-claim" {
         storage = "1Gi"
       }
     }
-	#storage_class_name = "standard"
+	storage_class_name = "standard"
     volume_name = kubernetes_persistent_volume.mysql-persistent-volume.metadata.0.name
   }
 }
