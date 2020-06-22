@@ -101,7 +101,7 @@ resource "kubernetes_deployment" "mysql-deployment" {
           },
           {
 		    name = "mysql-initdb"
-            config_map {
+            config_map = {
 		      name = "mysql-config"
           } 		  
 		] 		
