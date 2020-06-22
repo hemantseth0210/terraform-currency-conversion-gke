@@ -105,8 +105,7 @@ resource "kubernetes_deployment" "mysql-deployment" {
 		      name = "mysql-config"
           } 		  
 		] 		
-		}
-      }
+	  }
     }
   }
 }
