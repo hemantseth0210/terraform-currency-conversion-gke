@@ -9,7 +9,7 @@ resource "kubernetes_deployment" "mysql-deployment" {
 
   spec {
     replicas                  = 1
-    progress_deadline_seconds = 60
+    #progress_deadline_seconds = 60
     selector {
       match_labels = {
         App = "mysql"
