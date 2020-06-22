@@ -51,8 +51,8 @@ resource "kubernetes_deployment" "mysql-deployment" {
 			},
 			{
 			  name = "MYSQL_ROOT_PASSWORD"
-              value_from {
-                secret_key_ref {
+              value_from = {
+                secret_key_ref = {
 				  key  = "MYSQL_ROOT_PASSWORD"
                   name = "mysql-secret" 
                 }   				
@@ -60,8 +60,8 @@ resource "kubernetes_deployment" "mysql-deployment" {
 			},
 			{
 			  name = "MYSQL_USER"
-              value_from {
-                secret_key_ref {
+              value_from = {
+                secret_key_ref = {
 				  key  = "MYSQL_USER"
                   name = "mysql-secret" 
                 }   				
@@ -69,8 +69,8 @@ resource "kubernetes_deployment" "mysql-deployment" {
 			},
 			{
 			  name = "MYSQL_PASSWORD"
-              value_from {
-                secret_key_ref {
+              value_from = {
+                secret_key_ref = {
 				  key  = "MYSQL_PASSWORD"
                   name = "mysql-secret" 
                 }   				
