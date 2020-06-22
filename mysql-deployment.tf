@@ -97,14 +97,14 @@ resource "kubernetes_deployment" "mysql-deployment" {
 		
 		volume {
 		  name = "mysql-persistent-storage"
-          persistent_volume_claim = {
+          persistent_volume_claim {
 		    claim_name = "${kubernetes_persistent_volume_claim.mysql-persistent-volume-claim.metadata.0.name}"
 		  }
 		}
 		
 		volume {
 		  name = "mysql-initdb"
-          config_map = {
+          config_map {
 		    name = "mysql-config"
 		  }
 		}
