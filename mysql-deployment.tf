@@ -39,7 +39,11 @@ resource "kubernetes_deployment" "mysql-deployment" {
             }
           }
 		  
-          env = [
+          port {
+            container_port = 3306
+          }
+		  
+		  env [
 		    {
 			  name = "MYSQL_DATASOURCE_URL"
               value_from = {
@@ -78,11 +82,7 @@ resource "kubernetes_deployment" "mysql-deployment" {
 			}
 		  ]
 
-          port {
-            container_port = 3306
-          }
-
-		  volume_mount = [
+		  volume_mount [
 		    {
 		      name = "mysql-persistent-storage"
 			  mount_path = "/var/lib/mysql"
