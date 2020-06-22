@@ -44,43 +44,45 @@ resource "kubernetes_deployment" "mysql-deployment" {
           }
 		  
 		  env {
-		    {
-			  name = "MYSQL_DATASOURCE_URL"
-              value_from = {
-                config_map_key_ref = {
+			 name = "MYSQL_DATASOURCE_URL"
+             value_from = {
+               config_map_key_ref = {
 				  key  = "MYSQL_DATASOURCE_URL"
                   name = "mysql-config" 
                 }   				
-              }	   
-			},
-			{
-			  name = "MYSQL_ROOT_PASSWORD"
-              value_from = {
+             }
+		  }
+		  
+		  env {
+		     name = "MYSQL_ROOT_PASSWORD"
+             value_from = {
                 secret_key_ref = {
 				  key  = "MYSQL_ROOT_PASSWORD"
                   name = "mysql-secret" 
                 }   				
-              }	   
-			},
-			{
-			  name = "MYSQL_USER"
-              value_from = {
+              }
+		  }
+		  
+		  env {
+		     name = "MYSQL_USER"
+             value_from = {
                 secret_key_ref = {
 				  key  = "MYSQL_USER"
                   name = "mysql-secret" 
                 }   				
-              }	   
-			},
-			{
-			  name = "MYSQL_PASSWORD"
-              value_from = {
+              }
+		  }
+		  
+		  env {
+		     name = "MYSQL_PASSWORD"
+             value_from = {
                 secret_key_ref = {
 				  key  = "MYSQL_PASSWORD"
                   name = "mysql-secret" 
                 }   				
-              }	   
-			}
+              }
 		  }
+		  
 
 		  volume_mount = [
 		    {
