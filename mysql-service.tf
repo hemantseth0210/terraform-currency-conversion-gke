@@ -11,5 +11,6 @@ resource "kubernetes_service" "mysql-service" {
       port        = 3306
     }
     #cluster_ip = "None"
+	type = "ClusterIP"
   }
 }
