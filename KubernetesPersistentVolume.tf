@@ -13,6 +13,6 @@ resource "kubernetes_persistent_volume" "mysql-persistent-volume" {
 	    path = "/mnt/data"
 	  }
     }
-	storage_class_name = standard
+	#storage_class_name = "standard"
   }
 }
