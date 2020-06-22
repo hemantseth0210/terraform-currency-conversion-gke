@@ -1,6 +1,7 @@
 resource "kubernetes_persistent_volume" "mysql-persistent-volume" {
   metadata {
     name = "mysql-persistent-volume"
+	namespace = kubernetes_namespace.n.metadata[0].name
   }
   spec {
     capacity = {
