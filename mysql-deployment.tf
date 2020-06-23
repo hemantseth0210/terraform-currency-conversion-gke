@@ -44,16 +44,6 @@ resource "kubernetes_deployment" "mysql-deployment" {
           }
 		  
 		  env {
-			 name = "MYSQL_DATASOURCE_URL"
-             value_from {
-               config_map_key_ref {
-				  key  = "MYSQL_DATASOURCE_URL"
-                  name = "mysql-config" 
-                }   				
-             }
-		  }
-		  
-		  env {
 		     name = "MYSQL_ROOT_PASSWORD"
              value_from {
                 secret_key_ref {
@@ -61,6 +51,11 @@ resource "kubernetes_deployment" "mysql-deployment" {
                   name = "mysql-secret" 
                 }   				
               }
+		  }
+		  
+		  env {
+			 name = "MYSQL_DATABASE"
+             value = "currency_db"
 		  }
 		  
 		  env {
@@ -87,25 +82,13 @@ resource "kubernetes_deployment" "mysql-deployment" {
 		    name = "mysql-persistent-storage"
 			mount_path = "/var/lib/mysql"
 		  }
-		  
-		  volume_mount {
-		    name = "mysql-initdb"
-			mount_path = "/docker-entrypoint-initdb.d"
-		  }
-  
+		
         }
 		
 		volume {
 		  name = "mysql-persistent-storage"
           persistent_volume_claim {
 		    claim_name = kubernetes_persistent_volume_claim.mysql-persistent-volume-claim.metadata.0.name
-		  }
-		}
-		
-		volume {
-		  name = "mysql-initdb"
-          config_map {
-		    name = "mysql-config"
 		  }
 		}
       } 
