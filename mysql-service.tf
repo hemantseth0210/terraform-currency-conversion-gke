@@ -8,10 +8,8 @@ resource "kubernetes_service" "mysql-service" {
       App = kubernetes_deployment.mysql-deployment.spec.0.template.0.metadata[0].labels.App
     }
     port {
-      port        = 80
-	  target_port = 3306
+      port = 3306
     }
-    #cluster_ip = "None"
-	type = "LoadBalancer"
+    cluster_ip = "None"
   }
 }
