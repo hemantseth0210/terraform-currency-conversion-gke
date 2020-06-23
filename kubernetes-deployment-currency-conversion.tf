@@ -23,7 +23,7 @@ resource "kubernetes_deployment" "currency-conversion-deployment" {
       }
       spec {
         container {
-          image = "hemantseth0210/currency-conversion-service:0.0.1"
+          image = "hemantseth0210/currency-conversion-service:0.0.5"
           name  = "currency-conversion"
         
           env {
