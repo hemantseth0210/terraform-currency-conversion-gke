@@ -26,7 +26,7 @@ resource "kubernetes_deployment" "mysql-deployment" {
       }
       spec {
         container {
-          image = "mysql:8.0"
+          image = "mysql:5.7"
           name  = "mysql"
 		  resources {
             limits {
