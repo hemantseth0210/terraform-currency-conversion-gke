@@ -28,16 +28,7 @@ resource "kubernetes_deployment" "mysql-deployment" {
         container {
           image = "mysql:5.6"
           name  = "mysql"
-		  resources {
-            limits {
-              cpu    = "1"
-              memory = "1Gi"
-            }
-            requests {
-              cpu    = "500m"
-              memory = "500Mi"
-            }
-          }
+		  
 		  
           port {
             container_port = 3306
@@ -77,6 +68,8 @@ resource "kubernetes_deployment" "mysql-deployment" {
                 }   				
               }
 		  }
+		  
+		  #command = ["mysqld --default-authentication-plugin=mysql_native_password --skip-mysqlx"]
 		  
 		  volume_mount {
 		    name = "mysql-persistent-storage"
