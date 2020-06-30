@@ -4,4 +4,4 @@ gcp_region_1 = "us-east1"
 gcp_zone_1   = "us-east1-b"
 
 # Application Name (used in resource names, no spaces.)
-app_name = "currency-conversion-test"
+app_name = "currency-conversion"
